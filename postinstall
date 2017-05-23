@@ -41,7 +41,7 @@ EOT
 
 
 ## Brew installation
-git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+git clone --depth 1 https://github.com/Linuxbrew/brew.git ~/.linuxbrew
 
 cat <<EOT >> ~/.bashrc
 export PATH="$HOME/.linuxbrew/bin:$PATH"
