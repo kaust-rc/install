@@ -1,0 +1,44 @@
+#!/bin/bash -l
+
+logic_which() {
+    which $1 > /dev/null
+    return `echo $?`
+}
+export -f logic_which
+
+os_dep_install() {
+    if logic_which yum 
+        then
+            sudo yum groupinstall -y "Development Tools" && sudo yum install -y curl git irb python-setuptools ruby
+        elif logic_which apt-get
+            then
+                sudo apt-get install -y build-essential curl git python-setuptools ruby
+        else
+            echo "Unknown operating system"
+    fi
+}
+export -f os_dep_install
+
+
+## Install dependencies
+os_dep_install
+sudo useradd -md /home/jenkinsrc jenkinsrc
+sudo su - jenkinsrc
+cat <<EOT >> .ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGUlBDq5JXOLu/wdXTHLsVvbswiBYfBtVbxEgbol+VlB6zoy5lbjNkY7n/2YR2QJUjLjU4Z9dziVCIEMhmwZe9hgFsFZIaYIEX0DuJuIN0KRqE0VZlZCmuLgfsX6PjY14tshkBWGRshgYGZnIz2g/YGLxTOE7YNDA6SsF45Df5UEKp/EXul7IBpPz3Fu8D5Xr2aAi0fOTj9pCUSWPBapDD44d00E+JxaEf9PI6xW8SaTcJOtSGNOA5yZcJO2F6vhkZ6rF2JYIrcLU4FxaG90Q0HlAlHDpX5ARtRH1YRNgND2hBCxz4wKeTzJYv2Rx+AVOPjqLeOi8GUwKaebniBfnv jenkins
+EOT
+
+
+
+## Brew installation
+sudo su - jenkinsrc
+git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+
+cat <<EOT >> ~/.bashrc
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+EOT
+
+## Print IP address of the machine
+ip addr list|grep inet
