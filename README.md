@@ -4,14 +4,14 @@
 
 ## Install Linuxbrew
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/kaust-rc/install/master/install)"
 ```
 
 More installation information and options at http://linuxbrew.sh/#installation
 
 ## Uninstall Linuxbrew
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/uninstall)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/kaust-rc/install/master/uninstall)"
 ```
 
 Download the uninstall script and run `./uninstall --help` to view more uninstall options.
