@@ -31,9 +31,8 @@ export -f os_dep_install
 os_dep_install
 sudo useradd -md /home/jenkinsrc jenkinsrc
 sudo su - jenkinsrc
-mkdir ~/.ssh
-touch ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
+mkdir ~/.ssh && chmod 700 ~/.ssh
+touch ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys
 cat <<EOT >> ~/.ssh/authorized_keys
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGUlBDq5JXOLu/wdXTHLsVvbswiBYfBtVbxEgbol+VlB6zoy5lbjNkY7n/2YR2QJUjLjU4Z9dziVCIEMhmwZe9hgFsFZIaYIEX0DuJuIN0KRqE0VZlZCmuLgfsX6PjY14tshkBWGRshgYGZnIz2g/YGLxTOE7YNDA6SsF45Df5UEKp/EXul7IBpPz3Fu8D5Xr2aAi0fOTj9pCUSWPBapDD44d00E+JxaEf9PI6xW8SaTcJOtSGNOA5yZcJO2F6vhkZ6rF2JYIrcLU4FxaG90Q0HlAlHDpX5ARtRH1YRNgND2hBCxz4wKeTzJYv2Rx+AVOPjqLeOi8GUwKaebniBfnv jenkins
 EOT
