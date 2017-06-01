@@ -57,6 +57,7 @@ sudo su - $TESTUSER -c '
 git clone --depth 1 https://github.com/Linuxbrew/brew.git ~/.linuxbrew
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 brew tap homebrew/test-bot
+brew install git curl gpatch openssl perl pkg-config xz
 '
 
 sudo su - $TESTUSER -c '
